@@ -1,4 +1,4 @@
-#!/root/dj/socialsite/myenv/bin/python
+#!/root/dj/educasite/myenv/bin/python
 from __future__ import print_function
 import base64
 import os

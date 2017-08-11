@@ -1,4 +1,4 @@
-#!/root/Project/dj_by_examples/socialsite/myenv/bin/python
+#!/root/dj/socialsite/myenv/bin/python
 from django.core import management
 
 if __name__ == "__main__":

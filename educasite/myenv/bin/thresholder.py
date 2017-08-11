@@ -1,4 +1,4 @@
-#!/root/dj/socialsite/myenv/bin/python
+#!/root/dj/educasite/myenv/bin/python
 #
 # The Python Imaging Library
 # $Id$

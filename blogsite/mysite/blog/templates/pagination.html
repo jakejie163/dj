@@ -1,14 +1,13 @@
 <nav>
 	<ul class="pager">
-		{% if page.has_previous %}
-		<li><a href="?page={{ page.previous_page_number }}" >上一页</a></li>
-		{% endif %}
+		<li class="previous">
+		<a {% if page.has_previous %} href="?page={{ page.previous_page_number }}"
+		{% else %}class="disabled"{% endif %}>上一页</a></li>
 
 		<span class="current">
 			Page {{ page.number }} of {{ page.paginator.num_pages }}.
 		</span>
-		{% if page.has_next %}
-		<li><a href="?page={{ page.next_page_number }}">下一页</a></li>
-		{% endif %}
+		<li class="next"><a {% if page.has_next %} href="?page={{ page.next_page_number }}"
+			{% else %}class="disabled"{% endif %}>下一页</a></li>
 	</ul>
 </nav>

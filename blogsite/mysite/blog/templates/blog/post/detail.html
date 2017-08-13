@@ -17,7 +17,9 @@
     {% endfor %}
 
     {% with total_comments=comments.count %}
-        <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+		{% if total_comments %}
+        <h2>总共{{ total_comments }}人评论</h2>
+		{% endif %}
     {% endwith %}
     
     {% for comment in comments %}
@@ -32,7 +34,7 @@
     {% if new_comment %}
         <h2>你的评论已经被添加进去了.</h2>
     {% else %}
-        <h2>新评论</h2>
+        <h2>发表评论</h2>
         <form action="." method="post">
             {% csrf_token %}
             {{ comment_form.as_p }}

@@ -1,0 +1,5 @@
+<div class="list-group">
+	{% for date in months_of_date %}
+	<a href="#" class="list-group-item">{{ date|date:"Y年n月" }}</a>
+	{% endfor %}
+</div>

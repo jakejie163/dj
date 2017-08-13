@@ -1,0 +1,5 @@
+<ul class="list-group">
+	{% for post in side_posts %}
+	<li class="list-group-item"><a href="{{ post.get_absolute_url }}">{{ forloop.counter }}. {{ post.title }}</a></li>
+	{% endfor %}
+</ul>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}编辑你的帐号{% endblock %}
+
+{% block content %}
+    <h1>编辑你的帐号</h1>
+    <p>你可以使用以下表单编辑你的帐号:</p>
+    <form action="." method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <p><input type="submit" value="保存修改"></p>
+    </form>
+{% endblock %}

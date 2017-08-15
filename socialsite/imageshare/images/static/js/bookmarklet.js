@@ -7,7 +7,7 @@
 
 	function bookmarklet(msg){  //功能函数
 		//加载css
-		var css = jQuery('<link>');
+		var css = jQuery('<link>'); //css在自己网站那端
 		css.attr({
 			rel: 'stylesheet',
 			type: 'text/css',
@@ -19,11 +19,6 @@
 		box_html = '<div id="bookmarklet"><a href="#" id="close">&times;</a><h1>Select One:</h1><div class="images"></div></div>';
 		jQuery('body').append(box_html);
 
-		//close事件
-		jQuery('#bookmarklet #close').click(function(){
-			jQuery('#bookmarklet').remove(); //删除bookmarklet元素
-		});
-
 		//寻找所有的图片并且展示它们
 		jQuery.each(jQuery('img[src$="jpg"]'), function(index, image){
 			if (jQuery(image).width() >= min_width && jQuery(image).height() >= min_height){
@@ -32,25 +27,36 @@
 			}
 		});
 
+		//
+		// 事件处理代码
+		//
+		//close事件
+		jQuery('#bookmarklet #close').click(function(){
+			jQuery('#bookmarklet').remove(); //删除bookmarklet元素
+		});
+
 		//当一个图片被选择的时候，打开它的url在新窗口
 		jQuery('#bookmarklet .images a').click(function(e){
 			selected_image = jQuery(this).children('img').attr('src');
-			jQuery('#bookmarklet').hide();  //隐藏内容块
+			jQuery('#bookmarklet').hide();  
 			//新窗口打开
-			window.open(site_url + 'images/create/?url='
+			window.open(site_url + 'images/create/?url=' ////其实最主要的就是这一步
 						+ encodeURIComponent(selected_image)
 						+ '&title='
 						+ encodeURIComponent(jQuery('title').text()),
-						'_blank');
+						'_blank'); 
 		});
 
 
 	};
 
+	/*
+	 * 初始化开始
+	 */
 	if (typeof window.jQuery != 'undefined'){ //直接调用
 		bookmarklet(); 
 	}else {   //加载jQuery并调用bookmarklet
-		var conflict = typeof window.$ != 'undefined';
+		var conflict = typeof window.$ != 'undefined'; //$符号不能已经定义使用了
 		var script = document.createElement('script');
 		script.setAttribute('src',
 		'https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js');

@@ -24,6 +24,7 @@ r = redis.StrictRedis(host=settings.REDIS_HOST,
 
 
 
+# 可以再一次自定义
 @login_required
 def image_create(request):
     if request.method == 'POST':
@@ -75,7 +76,7 @@ def image_like(request):  #ajax视图
     return JsonResponse({'status':'ko'})
 
 @login_required
-def image_list(request):
+def image_list(request):  # 注意如何与前端js交互
     images = Image.objects.all()
     paginator = Paginator(images, 8)
     page = request.GET.get('page')

@@ -34,10 +34,11 @@
 	
 	1.功能清单:
 
-		模型: User, Image,People(User本身), Action
+		模型: User, Image, People(User本身), Action
 
 		操作:
-			a. User模型的注册/认证/简介编辑/主面板展示
+			a. User模型
+				注册/认证/简介编辑/主面板展示
 
 			b. 个人跟踪系统 
 				People list/detail/follow(ajax)
@@ -45,19 +46,17 @@
 			c. 活动流对象
 				使用Action模型,增加了用户最新动态通知的能力
 
-			e. 默认喜欢图片，自动模型相关字段（信号机制）
-			f.redis存储每张图片在线浏览数量、最热排名
+			f. Image create,detail, like, list
+			    使用redis存储每张图片在线浏览数量、最热排名
+				发送信号更新字段
 
-			b. Image上传,detail, ajax点赞, ajax翻页list
-			
 
 		其他:
 			社交网站的集成（国内不能用）
 
-
 		与前端页面交互:
 			jquery做成的bookmark
-			ajax点赞功能
+			ajax喜欢
 			ajax翻页
 
 

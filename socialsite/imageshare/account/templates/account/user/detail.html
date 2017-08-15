@@ -42,12 +42,12 @@
                 {
                     var previous_action = $('a.follow').data('action');
 
-                    // toggle data-action
+                    // 反转
                     $('a.follow').data('action', previous_action == 'follow' ? 'unfollow' : 'follow');
                     // toggle link text
                     $('a.follow').text(previous_action == 'follow' ? '取消' : '关注');
 
-                    // update total followers
+                    // 更新followers数量
                     var previous_followers = parseInt($('span.count .total').text());
                     $('span.count .total').text(previous_action == 'follow' ? previous_followers + 1 : previous_followers - 1);
                 }

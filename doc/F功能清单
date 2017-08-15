@@ -13,19 +13,20 @@
 
 			c.Post分享功能(通过email表单)
 
+		其他:
 
-		通过自定义标签/过滤器展示公共部分
-		增加sitemap/feed
+			通过自定义标签/过滤器展示公共部分
+			增加sitemap/feed
 
-		继承第三方搜索引擎Solr(未完成)
+			继承第三方搜索引擎Solr(未完成)
 
 	2.软件包：
 		django-taggit(标签)
 		markdown
 
 	3.启发:
-		内部通用class视图可以解决任务比较单一的任务,若一个视图中需要处理多个任务,
-		可以退回的fun试图,或者class原型视图
+		内部通用class视图可以解决任务比较单一的任务,若一个视图中需要处理多个任务
+		可以退回的fun试图或者class原型视图
 
 
 
@@ -33,21 +34,27 @@
 	
 	1.功能清单:
 
-		用户认证、编辑简介、展示面板
-		社交网站的集成（国内不能用）
+		模型: User, Image,People(User本身), Action
 
-		图片内容的添加、详情(create、detail、like、list)
+		操作:
+			a. User模型的注册/认证/简介编辑/主面板展示
+			b. Image上传,detail, ajax点赞, ajax翻页list
+
+			个人跟踪系统
+			c. People list/detail/follow(ajax)
+			d. 使用Action模型,增加了用户最新动态通知的能力
+			e. 默认喜欢图片，自动模型相关字段（信号机制）
+			f.redis存储每张图片在线浏览数量、最热排名
+			
+
+		其他:
+			社交网站的集成（国内不能用）
+
 
 		与前端页面交互:
 			jquery做成的bookmark
 			ajax点赞功能
 			ajax翻页
-
-		个人关注系统
-		增加了用户最新动态通知的能力
-		默认喜欢图片，自动模型相关字段（信号机制）
-		redis存储每张图片在线浏览数量、最热排名
-
 
 
 	2.软件包：
@@ -58,15 +65,12 @@
 		redis
 
 	
-	3.待学：
-		对User模型进行扩展
+	3.作业：
 		自定义用户认证后端
-		jquery、ajax
 		建立自定义的view装饰器
 
 		M2M字段通过中间层定义，动态增加字段到User模型
 		和动态增加get_absolute_url到User模型
-		select_related/prefetch_related优化查询
 
 		redis应用场景：
 			统计、存储最新条目、队列、缓存、发布/订阅、排名、实时特性

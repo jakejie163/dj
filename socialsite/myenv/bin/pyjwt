@@ -1,4 +1,4 @@
-#!/root/dj/socialsite/myenv/bin/python
+#!/root/Project/dj/socialsite/myenv/bin/python
 
 # -*- coding: utf-8 -*-
 import re

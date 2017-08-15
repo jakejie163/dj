@@ -1,4 +1,4 @@
-#!/root/dj/socialsite/myenv/bin/python
+#!/root/Project/dj/socialsite/myenv/bin/python
 """PILdriver, an image-processing calculator using PIL.
 
 An instance of class PILDriver is essentially a software stack machine

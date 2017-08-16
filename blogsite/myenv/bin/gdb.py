@@ -1,4 +1,4 @@
-#!/root/dj/blogsite/myenv/bin/python
+#!/root/Project/dj/blogsite/myenv/bin/python
 from __future__ import print_function
 from ptrace import PtraceError
 from ptrace.debugger import (PtraceDebugger, Application,

@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import LoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
+from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from .models import Profile
 
 
@@ -13,13 +13,9 @@ def register(request):
         user_form = UserRegistrationForm(request.POST)
 
         if user_form.is_valid():
-            # Create a new user object but avoid saving it yet
             new_user = user_form.save(commit=False)
-            # Set the chosen password
             new_user.set_password(user_form.cleaned_data['password'])
-            # Save the User object
             new_user.save()
-            # Create the user profile
             profile = Profile.objects.create(user=new_user)
             return render(request,
                           'account/register_done.html',
@@ -52,4 +48,4 @@ def edit(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'account/dashboard.html', {'section': 'dashboard'})
+    return render(request, 'account/dashboard.html')

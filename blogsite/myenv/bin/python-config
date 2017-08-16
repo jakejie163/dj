@@ -1,4 +1,4 @@
-#!/root/dj/blogsite/myenv/bin/python
+#!/root/Project/dj/blogsite/myenv/bin/python
 
 import sys
 import getopt

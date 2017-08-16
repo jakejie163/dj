@@ -1,13 +1,15 @@
 {% extends "base.html" %}
+{% load bootstrap3 %}
 
 {% block title %}注册新用户{% endblock %}
 
 {% block content %}
-    <h1>注册新用户</h1>
-    <p>请填写以下表单:</p>
-    <form action="." method="post">
+	<h1>请填写以下表单</h1>
+    <form class="form-register" action="." method="post">
         {% csrf_token %}
-        {{ user_form.as_p }}
-        <p><input type="submit" value="注册"></p>
+        {% bootstrap_form user_form %}
+		{% buttons %}
+			<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+		{% endbuttons %}
     </form>
 {% endblock %}

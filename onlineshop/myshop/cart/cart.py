@@ -36,7 +36,7 @@ class Cart(object):
             del self.cart[product_id]
             self.save()
     
-    def __iter__(self):
+    def __iter__(self): #迭代cart时才使用
         product_ids = self.cart.keys()
         products = Product.objects.filter(id__in=product_ids)
         
@@ -46,10 +46,10 @@ class Cart(object):
         for item in self.cart.values():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['quantity']
-            yield item
+            yield item #need?! yes 如果迭代self.cart对象,生成的输出?
 
     def __len__(self):
-        return sum( item['quantity'] for item in self.cart.values() )
+        return sum( item['quantity'] for item in self.cart.values() ) #迭代的是values对象
 
     def get_total_price(self):
         return sum(Decimal(item['price']) * item['quantity']

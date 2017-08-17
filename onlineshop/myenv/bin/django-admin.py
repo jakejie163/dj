@@ -1,4 +1,4 @@
-#!/home/k/Project/djcode/djexams/onlineshop/myenv/bin/python2
+#!/root/Project/dj/onlineshop/myenv/bin/python
 from django.core import management
 
 if __name__ == "__main__":

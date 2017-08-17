@@ -50,6 +50,7 @@
 			    使用redis存储每张图片在线浏览数量、最热排名
 				发送信号更新字段
 
+		应用: accout, images, actions
 
 		其他:
 			社交网站的集成（国内不能用）
@@ -149,6 +150,29 @@
 	4. 启发
 		当fun/class视图中有默认参数时,可以定义多个url模式匹配;
 		form hidden组件在模板中不显示,但可以在View中设置默认值
+
+四. 在线商店
+	
+	1. 功能清单
+		模型: Category, Product, Cart类, Order,OrderItem
+
+		操作: 
+			a. Product list/detail	
+			b. Cart中add/remove/detail
+			c. Order创建
+
+		应用: shop, cart, orders
+
+	2. 软件包
+		
+
+	3. 启发
+		a.form中hidden组件可以在form的initial中设置;
+
+		b.自定义上下文处理器,使在所有模板中共享变量{{ var }};
+		  自定义模板也可以共享, 区别,设计数据库访问
+
+		
 
 
 1.slug有中文问题，可以用uslug解决，

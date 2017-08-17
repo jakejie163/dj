@@ -3,15 +3,16 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 class Category(models.Model):
     name = models.CharField("名字", max_length=30, unique=True)
 
-    def __unicode__(self):
-        return self.name
-
     class Meta:
         verbose_name = verbose_name_plural = '类别'
+
+    def __unicode__(self):
+        return self.name
 
 
 class Item(models.Model):
@@ -22,12 +23,15 @@ class Item(models.Model):
                                 verbose_name="发布者")
     cat = models.ForeignKey(Category, verbose_name="类别")
 
-    def __unicode__(self):
-        return self.title
-
     class Meta:
         verbose_name = verbose_name_plural = "帖子"
         ordering = ('-publish',)
+
+    def __unicode__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('post:detail', args=[self.id]) 
 
 
 class Comment(models.Model):

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<ul>
+	{% for item in item_list %}
+	<li><a href="{{ item.get_absolute_url }}">{{ item.title }}<a></li>
+	{% endfor %}
+	</ul>
+{% endblock %}

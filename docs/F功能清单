@@ -20,13 +20,18 @@
 
 			继承第三方搜索引擎Solr(未完成)
 
+
 	2.软件包：
 		django-taggit(标签)
 		markdown
 
+
 	3.启发:
-		内部通用class视图可以解决任务比较单一的任务,若一个视图中需要处理多个任务
-		可以退回的fun试图或者class原型视图
+
+		a.关于视图:
+			内建通用视图, 比较单一的任务; 
+			一个视图中需要处理多个任务, 退回到fun试图或者class原型视图
+
 
 
 
@@ -80,12 +85,14 @@
 
 
 	4.启发：
-		最大启发，可以通过get方法的GET参数来初始化表单;
-		利用表单的目的可以是单纯的验证数据？
+		a.表单初始化
+			可以通过get方法的GET参数来初始化表单;
+			利用表单的目的可以是单纯的验证数据？
 
-		django要求所有的POST请求都包括csrftoken,这意味着
-		所有的ajax POST请求必须也包含，需要从cookie取出token,
-		再组合数据发送出去
+		b.post请求
+			django要求所有的POST请求都包括csrftoken,这意味着
+			所有的ajax POST请求必须也包含，需要从cookie取出token,
+			再组合数据发送出去
 		
 		优化数据库性能的手段：索引，查询优化，缓存，去规范化
 
@@ -148,30 +155,48 @@
 
 
 	4. 启发
-		当fun/class视图中有默认参数时,可以定义多个url模式匹配;
-		form hidden组件在模板中不显示,但可以在View中设置默认值
+		a. 视图默认参数
+			当fun/class视图中有默认参数时,可以定义多个url模式匹配;
+
+		b. form表单隐藏控件
+			form hidden组件在模板中不显示,但可以在View中设置默认值
+
+
+
+
 
 四. 在线商店
 	
 	1. 功能清单
-		模型: Category, Product, Cart类, Order,OrderItem
+		模型: Category, Product, Cart类, Order, OrderItem, Coupon
 
 		操作: 
 			a. Product list/detail	
 			b. Cart中add/remove/detail
 			c. Order创建
+			d. Coupon的form表单处理
 
 		应用: shop, cart, orders
 
 	2. 软件包
+		celery(Rabbitmq)
+		flower
+		weasyprint
+
 		
 
 	3. 启发
-		a.form中hidden组件可以在form的initial中设置;
 
-		b.自定义上下文处理器,使在所有模板中共享变量{{ var }};
-		  自定义模板也可以共享, 区别,设计数据库访问
+		a. form表单隐藏控件
+			form中hidden组件可以在form的initial中设置;
 
+		b. 共享部分(模板)
+			自定义上下文处理器,使在所有模板中共享变量{{ var }};
+			自定义模板也可以共享, 区别,设计数据库访问
+
+		c. form表单
+			表单的post处理在一个View中;
+			但渲染可以在另一个应用的另一个View中!
 		
 
 

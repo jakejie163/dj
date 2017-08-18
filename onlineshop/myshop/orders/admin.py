@@ -32,7 +32,7 @@ def export_to_csv(modeladmin, request, queryset):
 
 export_to_csv.short_description = 'Export to CSV'
 
-# list-display的回调
+# admin list
 def order_detail(obj):
     return '<a href="{}">View</a>'.format(
             reverse('orders:admin_order_detail', args=[obj.id]))
@@ -45,9 +45,11 @@ def order_pdf(obj):
 order_pdf.allow_tags = True  
 order_pdf.short_description = 'PDF bill'
 
+
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     raw_id_fields = ['product']
+
 
 class OrderAdmin(admin.ModelAdmin):
     list_display = ['id', 'first_name', 'last_name', 'email', 'address',

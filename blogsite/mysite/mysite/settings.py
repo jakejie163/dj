@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'blog',
     'taggit',
     'haystack',
+    'bootstrap3',
 ]
 
 HAYSTACK_CONNECTIONS = {
@@ -137,5 +138,5 @@ STATIC_URL = '/static/'
 EMAIL_HOST = 'smtp.163.com'
 EMAIL_PORT = 25 
 EMAIL_HOST_USER = 'chehuizong@163.com'
-EMAIL_HOST_PASSWORD = '123quiet'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True

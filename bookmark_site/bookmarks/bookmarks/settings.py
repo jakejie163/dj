@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'bmark',
 ]
 
@@ -124,12 +123,4 @@ STATIC_URL = '/static/'
 from django.urls import reverse_lazy
 LOGIN_URL = reverse_lazy('user_login')
 LOGOUT_REDIRECT_URL = reverse_lazy('main_page')
-
-# rest
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-	 'rest_framework.permissions.IsAdminUser',
-    ],
-    'PAGE_SIZE': 10
-}
 

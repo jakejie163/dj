@@ -1,5 +1,12 @@
-<div class="list-group">
+<ul class="list-group">
 	{% for date in months_of_date %}
-	<a href="#" class="list-group-item">{{ date|date:"Y年n月" }}</a>
+	<li id={{ date|date:"Y"}} data-toggle="collapse" data-target="collapsing-content">
+		<h2><a href="#" class="list-group-item">{{ date|date:"Y" }}</a></h2>
+		<div id="collaping-content">
+			<ul>
+				<li><a href="#" class="list-group-item">{{ date|date:"Y年n月" }}</a></li>
+			</ul>
+		</div>
+	</li>
 	{% endfor %}
-</div>
+</ul>

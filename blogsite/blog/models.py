@@ -4,8 +4,18 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from django.utils.text import slugify
 
-from taggit.managers import TaggableManager
+class Tag(models.Model):
+    name = models.CharField(max_length=20)
+    slug = models.SlugField()
+
+    def __str__(self):
+        return self.name
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
 
 class PublishedManager(models.Manager):
@@ -26,10 +36,10 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
+    tags = models.ManyToManyField(Tag)
 
     objects = models.Manager() 
     published = PublishedManager() 
-    tags = TaggableManager()
 
     class Meta:
         ordering = ('-publish',)
@@ -58,3 +68,4 @@ class Comment(models.Model):
 
     def __str__(self):
         return 'Comment by {} on {}'.format(self.name, self.post)
+

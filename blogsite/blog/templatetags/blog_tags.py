@@ -1,3 +1,5 @@
+# -*- coding:UTF-8 -*-
+
 from django import template
 from django.db.models import Count
 from django.utils.safestring import mark_safe
@@ -28,5 +30,5 @@ def get_most_commented_posts(count=5):
 
 
 @register.filter(name='markdown')
-def markdown_format(text):
-    return mark_safe(markdown.markdown(text))
+def markdown_format(text):  #text传过来时是否进行了转意?
+    return mark_safe(markdown.markdown(text))  # 不必再被django进一步转意

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'polls',
     'blog',
     'books',
+    'myforms',
 ]
 
 MIDDLEWARE = [

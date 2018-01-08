@@ -26,4 +26,6 @@ urlpatterns = [
     path('publisher-polls/', include('polls.urls', namespace='publisher-polls')),
 
     path('books/', include('books.urls')),
+
+    path('f/', include('myforms.urls')),
 ]

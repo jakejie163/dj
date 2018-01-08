@@ -5,8 +5,10 @@
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
+from django.core.mail import send_mail
 
 from .models import Publisher, Book, Author
+from .forms import ContactForm
 
 
 class PublisherList(ListView):
@@ -49,3 +51,24 @@ class AuthorDetailView(DetailView):
         object.last_accessed = timezone.now()
         object.save()
         return object
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            subject = cd['subject']
+            message = cd['message']
+            sender = cd['sender']
+            cc_myself = cd['cc_myself']
+
+            recipients = ['info@example.com']
+            if cc_myself:
+                recipients.append(sender)
+            send_mail(subject, message, sender, recipients)
+
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = ContactForm()
+    return render(request, 'books/contact_form.html', {'form': form})

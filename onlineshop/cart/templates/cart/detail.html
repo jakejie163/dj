@@ -56,6 +56,6 @@
 	</table>
 	<p class="text-right">
 		<a class="button light" href="{% url "shop:product_list" %}">Continue shopping</a>
-		<a class="button" href="#">Checkout</a>
+		<a class="button" href="{% url "orders:order_create" %}">Checkout</a>
 	</p>
 {% endblock %}

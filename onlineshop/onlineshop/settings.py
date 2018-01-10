@@ -25,7 +25,10 @@ SECRET_KEY = 'hwz42$(-xh6c@pu_2zm+&1a!zz#6-p5)vm#u^hnndhy5fhpx(n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        '7e236ed7.ngrok.io',
+        '127.0.0.1',
+]
 
 
 # Application definition
@@ -43,9 +46,16 @@ INSTALLED_APPS = [
     'shop',
     'cart',
     'orders',
+    'paypal.standard.ipn',
+    'payment',
 ]
 
 CART_SESSION_ID = 'cart'
+
+
+PAYPAL_RECEIVER_EMAIL = 'chehuizong@163.com'
+PAYPAL_TEST = True 
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

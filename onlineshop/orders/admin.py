@@ -30,11 +30,16 @@ def export_to_csv(modeladmin, request, queryset):
     return response
 export_to_csv.short_description = 'Export to CSV'
 
-
-#自定义字段
+# View
 def order_detail(obj):
     return format_html(
             '<a href="{}">View</a>'.format(reverse('orders:admin_order_detail', 
+            args=[obj.id])))
+
+# Invoice pdf
+def order_pdf(obj):
+    return format_html(
+            '<a href="{}">PDF</a>'.format(reverse('orders:admin_order_pdf', 
             args=[obj.id])))
 
 
@@ -48,6 +53,7 @@ class OrderAdmin(admin.ModelAdmin):
         'id', 'first_name', 'last_name', 'email', 'address',
         'postal_code', 'city', 'paid', 'created', 'updated',
         order_detail,
+        order_pdf,
     ]
     list_filter = ['paid', 'created', 'updated',]
     inlines = [OrderItemInline]

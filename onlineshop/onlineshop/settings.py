@@ -26,7 +26,7 @@ SECRET_KEY = 'hwz42$(-xh6c@pu_2zm+&1a!zz#6-p5)vm#u^hnndhy5fhpx(n'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-        '7e236ed7.ngrok.io',
+        '5611f2bd.ngrok.io',
         '127.0.0.1',
 ]
 
@@ -35,6 +35,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -139,6 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')

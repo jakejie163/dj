@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'orders',
     'paypal.standard.ipn',
     'payment',
+    'coupons',
 ]
 
 CART_SESSION_ID = 'cart'

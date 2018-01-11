@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/doc/', include('django.contrib.admindocs.urls')),
     path('admin/', admin.site.urls),
+    path('coupons/', include('coupons.urls', namespace='coupons')),
     path('payment/', include('payment.urls', namespace='payment')),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('cart/', include('cart.urls', namespace='cart')),

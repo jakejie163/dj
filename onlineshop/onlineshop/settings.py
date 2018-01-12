@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -43,11 +45,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'rosetta',
+    'parler',
+    'paypal.standard.ipn',
+    'localflavor',
 
     'shop',
     'cart',
     'orders',
-    'paypal.standard.ipn',
     'payment',
     'coupons',
 ]
@@ -62,6 +67,7 @@ PAYPAL_TEST = True
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -128,6 +134,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'zh-hans'
 
+LANGUAGES = (
+    ('en', _('English')),
+    ('zh-hans', _('Chinese')),
+)
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale/'),
+)
+
 TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
@@ -146,5 +161,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en',},
+        {'code': 'zh-hans',},
+    ),
+
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
+

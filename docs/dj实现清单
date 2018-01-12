@@ -180,6 +180,7 @@
 	2. 软件包
 		celery(Rabbitmq)
 		flower
+		django-paypal
 		weasyprint
 
 		

@@ -10,8 +10,31 @@ urlpatterns = [
     path('books/<publisher>/', 
         views.PublisherBookList.as_view, 
         name='publisher-book-list'),
+    
+    path('authors/',
+        views.AuthorList.as_view(),
+        name='author-list'),
 
     path('authors/<int:pk>/', 
         views.AuthorDetailView.as_view(), 
         name='author-detail'),
+
+    path('author/add/',
+        views.AuthorCreate.as_view(),
+        name='author-add'),
+
+    path('author/<int:pk>/',
+        views.AuthorUpdate.as_view(),
+        name='author-update'),
+
+    path('author/<int:pk>/delete/',
+        views.AuthorDelete.as_view(),
+        name='author-delete'),
+
+    #path('contact/', views.contact, name='contact'),
+    path('contact/', 
+        views.ContactView.as_view(), 
+        name='contact'),
+    path('pdf/', views.pdf_view, name='pdf'),
+
 ]

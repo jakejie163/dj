@@ -31,6 +31,10 @@ urlpatterns = [
         views.AuthorDelete.as_view(),
         name='author-delete'),
 
+    path('author/<int:pk>/interest/', 
+        views.RecordInterest.as_view(),
+        name='author-interest'),
+
     #path('contact/', views.contact, name='contact'),
     path('contact/', 
         views.ContactView.as_view(), 

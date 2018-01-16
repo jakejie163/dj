@@ -8,18 +8,39 @@ urlpatterns = [
     path('create/', views.CourseCreateView.as_view(), name='course_create'),
     path('<int:pk>/edit/', views.CourseUpdateView.as_view(), name='course_edit'),
     path('<int:pk>/delete/', views.CourseDeleteView.as_view(), name='course_delete'),
+
+    path('<int:pk>/module/', views.CourseModuleUpdateView.as_view(), name='course_module_update'),
+
+    path(
+        'module/<int:module_id>/content/<model_name>/create/',
+        views.ContentCreateUpdateView.as_view(), 
+        name='module_content_create'
+    ),
+    path(
+        'module/<int:module_id>/content/<model_name>/<int:id>/',
+        views.ContentCreateUpdateView.as_view(), 
+        name='module_content_update'
+    ),
+    path(
+        'content/<int:id>/delete/', 
+        views.ContentDeleteView.as_view(),
+        name='module_content_delete'
+    ),
+    path(
+        'module/<int:module_id>/', 
+        views.ModuleContentListView.as_view(), 
+        name='module_content_list'
+    ),
+    
+
+    path(
+        'module/order/', 
+        views.ModuleOrderView.as_view(), 
+        name='module_order'
+    ),
+    path('content/order/', 
+        views.ContentOrderView.as_view(), 
+        name='content_order'
+    ),
+
 ]
-
-"""
-url(r'^(?P<pk>\d+)/module/$', views.CourseModuleUpdateView.as_view(), name='course_module_update'),
-
-url(r'^module/(?P<module_id>\d+)/content/(?P<model_name>\w+)/create/$',
-        views.ContentCreateUpdateView.as_view(), name='module_content_create'),
-url(r'^module/(?P<module_id>\d+)/content/(?P<model_name>\w+)/(?P<id>\d+)/$',
-        views.ContentCreateUpdateView.as_view(), name='module_content_update'),
-url(r'^content/(?P<id>\d+)/delete/$', views.ContentDeleteView.as_view(), name='module_content_delete'),
-url(r'^module/(?P<module_id>\d+)/$', views.ModuleContentListView.as_view(), name='module_content_list'),
-url(r'^module/order/$', views.ModuleOrderView.as_view(), name='module_order'),
-url(r'^content/order/$', views.ContentOrderView.as_view(), name='content_order'),
-
-"""

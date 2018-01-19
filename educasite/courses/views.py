@@ -21,6 +21,7 @@ from .models import (
     Subject, Course, Module, Content
 )
 from .forms import ModuleFormSet
+from students.forms import CourseEnrollForm
 
 
 class OwnerMixin(object):   # 提供过滤功能
@@ -227,3 +228,11 @@ class CourseListView(TemplateResponseMixin, View):
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/course/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseDetailView, self).get_context_data(**kwargs)
+        context['enroll_form'] = CourseEnrollForm(  # 增加一个表单上下文
+            initial = {'course': self.object}
+        )
+        return context
+

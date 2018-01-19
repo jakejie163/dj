@@ -8,7 +8,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from .fields import OrderField
 
 
-class Subject(models.Model):
+class Subject(models.Model):  #自己后台添加
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
 
@@ -19,7 +19,7 @@ class Subject(models.Model):
         return self.title
 
 
-class Course(models.Model):
+class Course(models.Model): # 教师CMS添加
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='courses_created')
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='courses')
     title = models.CharField(max_length=200)
@@ -61,7 +61,7 @@ class Content(models.Model):
         },
         on_delete=models.CASCADE,
     )
-    object_id = models.PositiveIntegerField() # 存储特定内容类型的实例编号吧?
+    object_id = models.PositiveIntegerField() # 存储特定内容类型的实例编号吧? 恩
     item = GenericForeignKey('content_type', 'object_id')
     order = OrderField(blank=True, for_fields=['module'])
 
